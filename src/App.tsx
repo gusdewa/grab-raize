@@ -80,8 +80,12 @@ function App() {
     <main className="overflow-hidden bg-[#f6f5ef] text-[#172019]">
       <section className="relative min-h-[760px] overflow-hidden bg-[#172019] text-white lg:min-h-[820px]">
         <img
-          src={`${import.meta.env.BASE_URL}raize-malang-hero.png`}
+          src={`${import.meta.env.BASE_URL}raize-malang-hero.webp`}
           alt="Ilustrasi SUV kompak putih bersama driver online di Malang pada pagi hari"
+          width="1586"
+          height="992"
+          fetchPriority="high"
+          decoding="async"
           className="absolute inset-0 h-full w-full object-cover object-[61%_center]"
         />
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(10,20,13,.94)_0%,rgba(10,20,13,.77)_37%,rgba(10,20,13,.12)_70%,rgba(10,20,13,.28)_100%)] max-md:bg-[linear-gradient(180deg,rgba(10,20,13,.78)_0%,rgba(10,20,13,.14)_32%,rgba(10,20,13,.94)_72%,#0a140d_100%)]" />
