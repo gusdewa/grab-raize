@@ -30,6 +30,16 @@ button {
   cursor: pointer;
 }
 
+.mobile-snap {
+  scrollbar-width: none;
+  overscroll-behavior-inline: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+.mobile-snap::-webkit-scrollbar {
+  display: none;
+}
+
 .eyebrow {
   margin-bottom: 1rem;
   font-size: .72rem;

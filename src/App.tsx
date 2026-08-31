@@ -213,9 +213,12 @@ function App() {
             <div className="eyebrow">Mulai pelan, jalan lama</div>
             <h2 className="section-title">Coba dulu. Cocok dulu. Baru lanjut.</h2>
             <p className="section-copy mx-auto">Tidak perlu langsung terikat panjang. Kepercayaan dibangun satu tahap sekali.</p>
+            <div className="mt-5 inline-flex items-center gap-1 text-xs font-extrabold text-black/40 sm:hidden">
+              Geser untuk lihat tahap berikutnya <ChevronRight size={15} />
+            </div>
           </div>
 
-          <div className="relative mt-14 grid gap-4 lg:grid-cols-3">
+          <div className="mobile-snap relative -mx-5 mt-10 grid snap-x snap-mandatory grid-flow-col auto-cols-[86%] gap-4 overflow-x-auto px-5 pb-4 sm:mx-0 sm:grid-flow-row sm:auto-cols-auto sm:grid-cols-2 sm:overflow-visible sm:px-0 sm:pb-0 lg:mt-14 lg:grid-cols-3">
             <div className="pointer-events-none absolute left-[16.6%] right-[16.6%] top-10 hidden h-px bg-black/15 lg:block" />
             {[
               {
@@ -228,7 +231,7 @@ function App() {
                 step: '03', icon: Sparkles, title: 'Driver terbukti', price: 'Rp13jt', note: '3 bulan · setelah 1–2 siklus baik', accent: false,
               },
             ].map(({ step, icon: Icon, title, price, note, accent }) => (
-              <article key={step} className={`relative rounded-[1.75rem] border p-7 sm:p-8 ${accent ? 'border-[#172019] bg-[#172019] text-white shadow-2xl' : 'border-black/10 bg-white'}`}>
+              <article key={step} className={`relative min-h-[340px] snap-start rounded-[1.75rem] border p-7 sm:min-h-0 sm:p-8 ${accent ? 'border-[#172019] bg-[#172019] text-white shadow-2xl' : 'border-black/10 bg-white'}`}>
                 <div className={`relative z-10 grid size-20 place-items-center rounded-2xl ${accent ? 'bg-[#b7f34a] text-[#172019]' : 'bg-[#edf7d9]'}`}>
                   <Icon size={31} strokeWidth={1.8} />
                 </div>
@@ -361,16 +364,19 @@ function App() {
             <div className="eyebrow">Aman untuk dua pihak</div>
             <h2 className="section-title">Aturannya jelas dari awal.</h2>
             <p className="section-copy">Bukan untuk bikin ribet—supaya kalau ada masalah, kita sama-sama tahu harus bagaimana.</p>
+            <div className="mt-5 inline-flex items-center gap-1 text-xs font-extrabold text-black/40 sm:hidden">
+              Geser untuk lihat semua aturan <ChevronRight size={15} />
+            </div>
           </div>
 
-          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mobile-snap -mx-5 mt-10 grid snap-x snap-mandatory grid-flow-col auto-cols-[82%] gap-4 overflow-x-auto px-5 pb-4 sm:mx-0 sm:grid-flow-row sm:auto-cols-auto sm:grid-cols-2 sm:overflow-visible sm:px-0 sm:pb-0 lg:mt-12 lg:grid-cols-4">
             {[
               { icon: Wrench, title: 'Mogok normal', text: 'Hari mobil tidak bisa dipakai ditambahkan ke masa sewa.' },
               { icon: ShieldCheck, title: 'Kecelakaan', text: 'Utamakan aman, lapor, dokumentasi, lalu ikuti proses asuransi.' },
               { icon: Navigation, title: 'GPS terbuka', text: 'Dipasang dan diberitahukan untuk keamanan aset dan bantuan darurat.' },
               { icon: Camera, title: 'Serah terima', text: 'Foto, video, odometer, ban, kunci, STNK, dan kondisi dicatat bersama.' },
             ].map(({ icon: Icon, title, text }) => (
-              <article key={title} className="group min-h-64 rounded-[1.75rem] bg-white p-7 transition duration-300 hover:-translate-y-1 hover:shadow-xl">
+              <article key={title} className="group min-h-64 snap-start rounded-[1.75rem] bg-white p-7 transition duration-300 hover:-translate-y-1 hover:shadow-xl">
                 <div className="grid size-14 place-items-center rounded-2xl bg-[#172019] text-[#b7f34a]"><Icon size={26} /></div>
                 <h3 className="mt-8 text-xl font-black">{title}</h3>
                 <p className="mt-3 text-sm leading-relaxed text-black/55">{text}</p>
@@ -398,16 +404,19 @@ function App() {
             <div className="mt-7 inline-flex items-center gap-3 rounded-2xl border border-black/10 bg-white px-4 py-3 text-sm font-bold">
               <UserCheck size={21} className="text-[#579300]" /> Satu driver disetujui · tidak boleh dialihkan
             </div>
+            <div className="mt-5 flex items-center gap-1 text-xs font-extrabold text-black/40 sm:hidden">
+              Geser untuk lihat prosesnya <ChevronRight size={15} />
+            </div>
           </div>
 
-          <div className="grid gap-3 sm:grid-cols-2">
+          <div className="mobile-snap -mx-5 grid snap-x snap-mandatory grid-flow-col auto-cols-[82%] gap-3 overflow-x-auto px-5 pb-4 sm:mx-0 sm:grid-flow-row sm:auto-cols-auto sm:grid-cols-2 sm:overflow-visible sm:px-0 sm:pb-0">
             {[
               { icon: FileCheck2, n: '01', title: 'Kirim dokumen', text: 'KTP, KK, SIM A, SKCK, alamat, dan akun ride-hailing.' },
               { icon: Phone, n: '02', title: 'Kenalan singkat', text: 'Bahas pengalaman, pola kerja, dan komunikasi.' },
               { icon: BadgeCheck, n: '03', title: 'Cek 2 referensi', text: 'Keluarga dan referensi kerja yang bisa dihubungi.' },
               { icon: Car, n: '04', title: 'Mulai trial', text: 'Serah terima lengkap, lalu evaluasi bersama 7 hari.' },
             ].map(({ icon: Icon, n, title, text }) => (
-              <article key={n} className="rounded-2xl border border-black/10 bg-white p-6">
+              <article key={n} className="min-h-52 snap-start rounded-2xl border border-black/10 bg-white p-6 sm:min-h-0">
                 <div className="flex items-center justify-between"><Icon size={24} /><span className="text-xs font-black tracking-[.15em] text-black/25">{n}</span></div>
                 <h3 className="mt-8 text-lg font-black">{title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-black/50">{text}</p>
@@ -424,7 +433,7 @@ function App() {
               <div className="eyebrow">Ringkasnya</div>
               <h2 className="section-title">Angka utama, tanpa kejutan.</h2>
             </div>
-            <div className="grid gap-px overflow-hidden rounded-2xl bg-black/15 sm:grid-cols-2">
+            <div className="grid grid-cols-2 gap-px overflow-hidden rounded-2xl bg-black/15">
               {[
                 ['Trial 7 hari', 'Rp1,225jt'],
                 ['Deposit kembali', 'Rp3jt'],
