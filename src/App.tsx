@@ -568,14 +568,28 @@ function App() {
             ))}
           </div>
 
-          <div className="mt-6 overflow-hidden rounded-[2rem] bg-[#172019] p-3 shadow-[0_30px_100px_rgba(23,32,25,.18)] sm:p-5">
+          <div className="relative z-50 mt-6 min-w-0 overflow-hidden rounded-[2rem] bg-[#172019] p-3 shadow-[0_30px_100px_rgba(23,32,25,.18)] sm:p-5">
             {googleFormEmbedUrl ? (
               <>
+                <div className="flex flex-col gap-3 px-3 pb-5 pt-2 text-white sm:flex-row sm:items-center sm:justify-between">
+                  <div>
+                    <p className="text-sm font-extrabold">Siapkan foto dokumen sebelum mulai.</p>
+                    <p className="mt-1 text-xs font-semibold text-white/45">Untuk upload yang paling nyaman, buka formulir di layar penuh.</p>
+                  </div>
+                  <a
+                    href={googleFormUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex shrink-0 items-center justify-center gap-2 rounded-full bg-[#b7f34a] px-5 py-3 text-sm font-extrabold text-[#172019]"
+                  >
+                    Buka layar penuh <ExternalLink size={17} />
+                  </a>
+                </div>
                 <iframe
                   src={googleFormEmbedUrl}
                   title="Form pendaftaran driver rental Toyota Raize"
                   loading="lazy"
-                  className="h-[1180px] w-full rounded-[1.35rem] bg-white sm:h-[1080px]"
+                  className="block h-[76svh] min-h-[680px] max-h-[900px] w-full min-w-0 rounded-[1.35rem] bg-white sm:h-[900px]"
                 >
                   Memuat formulir pendaftaran…
                 </iframe>
