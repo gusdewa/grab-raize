@@ -105,7 +105,7 @@ function App() {
           <div className="hidden items-center gap-8 text-sm font-bold text-white/75 md:flex">
             <a className="transition hover:text-white" href="#skema">Skema</a>
             <a className="transition hover:text-white" href="#hitungan">Hitungan</a>
-            <a className="transition hover:text-white" href="#aturan">Aturan</a>
+            <a className="transition hover:text-white" href="#skenario">Skenario</a>
             <WhatsAppButton compact />
           </div>
 
@@ -126,6 +126,7 @@ function App() {
               {[
                 ['Skema rental', '#skema'],
                 ['Coba hitungan', '#hitungan'],
+                ['Kalau rencana berubah', '#skenario'],
                 ['Aturan yang jelas', '#aturan'],
               ].map(([label, href]) => (
                 <a
@@ -350,6 +351,99 @@ function App() {
                 ))}
               </div>
             </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="skenario" className="bg-white px-5 py-20 sm:px-8 lg:px-10 lg:py-28">
+        <div className="mx-auto max-w-7xl">
+          <div className="grid gap-8 lg:grid-cols-[1fr_.8fr] lg:items-end">
+            <div>
+              <div className="eyebrow">Kalau rencana berubah</div>
+              <h2 className="section-title">Hari tidak hilang. Tanggalnya yang bergeser.</h2>
+            </div>
+            <p className="section-copy lg:pb-2">Contoh konkret supaya owner dan driver tidak perlu menebak-nebak saat situasi berubah.</p>
+          </div>
+
+          <article className="mt-12 overflow-hidden rounded-[2rem] bg-[#172019] p-6 text-white sm:p-9 lg:p-12">
+            <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+              <div>
+                <div className="text-xs font-black uppercase tracking-[.16em] text-[#b7f34a]">Contoh utama · owner pakai 1 hari</div>
+                <h3 className="mt-3 max-w-2xl text-2xl font-black leading-tight sm:text-4xl">Driver tetap mendapat 30 hari penuh. Tanggal bayar berikutnya ikut +1 hari.</h3>
+              </div>
+              <span className="inline-flex w-fit shrink-0 items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-xs font-bold text-white/65">
+                <CalendarCheck size={16} className="text-[#b7f34a]" /> Tidak hangus
+              </span>
+            </div>
+
+            <div className="relative mt-9 grid grid-cols-2 gap-3 sm:grid-cols-4">
+              <div className="pointer-events-none absolute left-[12.5%] right-[12.5%] top-8 hidden h-px bg-white/15 sm:block" />
+              {[
+                { date: '1 Sep', label: 'Mulai periode', note: 'Hari driver ke-1', tone: 'bg-white text-[#172019]' },
+                { date: '9 Sep', label: 'Dipakai owner', note: '1 hari · driver libur bayar', tone: 'bg-[#ff8b70] text-[#172019]' },
+                { date: '1 Okt', label: 'Hari ganti', note: 'Hari driver ke-30', tone: 'bg-[#b7f34a] text-[#172019]' },
+                { date: '2 Okt', label: 'Bayar berikutnya', note: 'Bergeser +1 hari', tone: 'bg-white text-[#172019]' },
+              ].map(({ date, label, note, tone }) => (
+                <div key={date} className={`relative z-10 rounded-2xl p-4 sm:p-5 ${tone}`}>
+                  <div className="text-2xl font-black tracking-tight sm:text-3xl">{date}</div>
+                  <div className="mt-5 text-sm font-black">{label}</div>
+                  <div className="mt-1 text-[11px] font-semibold opacity-55">{note}</div>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-8">
+              <div className="grid h-4 grid-cols-[8fr_1fr_21fr_1fr] gap-1" aria-label="Ilustrasi 30 hari driver, satu hari owner, dan satu hari pengganti">
+                <div className="rounded-full bg-[#7faf34]" />
+                <div className="min-w-2 rounded-full bg-[#ff8b70]" />
+                <div className="rounded-full bg-[#7faf34]" />
+                <div className="min-w-2 rounded-full bg-[#b7f34a]" />
+              </div>
+              <div className="mt-3 flex flex-wrap gap-x-5 gap-y-2 text-[11px] font-bold text-white/50">
+                <span className="inline-flex items-center gap-2"><i className="size-2 rounded-full bg-[#7faf34]" /> Hari pakai driver</span>
+                <span className="inline-flex items-center gap-2"><i className="size-2 rounded-full bg-[#ff8b70]" /> Dipakai owner</span>
+                <span className="inline-flex items-center gap-2"><i className="size-2 rounded-full bg-[#b7f34a]" /> Hari pengganti</span>
+              </div>
+            </div>
+
+            <div className="mt-8 grid gap-2 sm:grid-cols-3">
+              {['Owner kabari min. 3 hari', 'Maks. 2 hari per periode', 'Mendadak: driver boleh menolak'].map((rule) => (
+                <div key={rule} className="flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-xs font-bold text-white/65">
+                  <Check size={16} className="shrink-0 text-[#b7f34a]" /> {rule}
+                </div>
+              ))}
+            </div>
+          </article>
+
+          <div className="mt-12 flex items-end justify-between gap-6">
+            <div>
+              <div className="eyebrow">Skenario lain</div>
+              <h3 className="text-2xl font-black tracking-tight sm:text-3xl">Balik ke aturan yang sama.</h3>
+            </div>
+            <div className="hidden items-center gap-1 text-xs font-extrabold text-black/35 sm:flex">Geser kartu <ChevronRight size={15} /></div>
+          </div>
+
+          <div className="mobile-snap -mx-5 mt-6 grid snap-x snap-mandatory grid-flow-col auto-cols-[82%] gap-3 overflow-x-auto px-5 pb-4 sm:mx-0 sm:auto-cols-[43%] sm:px-0 lg:auto-cols-[31%]">
+            {[
+              { icon: Car, label: 'OWNER PAKAI 2 HARI', value: 'Tanggal +2 hari', text: 'Akhir periode dan pembayaran berikutnya sama-sama bergeser dua hari.' },
+              { icon: Wrench, label: 'WORKSHOP NORMAL 3 HARI', value: 'Tanggal +3 hari', text: 'Kalau bukan karena kelalaian driver, tiga hari itu diganti di akhir.' },
+              { icon: ReceiptText, label: 'OWNER STOP 10 HARI LEBIH AWAL', value: 'Refund Rp1,5jt', text: 'Sisa 10 hari × Rp150rb dikembalikan pro rata ke driver.' },
+              { icon: KeyRound, label: 'DRIVER BALIK LEBIH AWAL', value: 'Tidak otomatis refund', text: 'Paket tetap berjalan sampai akhir. Kondisi khusus bisa dibicarakan.' },
+              { icon: Clock3, label: 'PEMBAYARAN TERLAMBAT', value: 'Periode baru ditahan', text: 'Hari 1 dihubungi, hari 2 buat rencana, hari 3 belum selesai maka tidak diperpanjang.' },
+            ].map(({ icon: Icon, label, value, text }) => (
+              <article key={label} className="min-h-64 snap-start rounded-[1.5rem] border border-black/10 bg-[#f6f5ef] p-6">
+                <div className="flex items-start justify-between gap-3">
+                  <span className="grid size-11 place-items-center rounded-xl bg-[#172019] text-[#b7f34a]"><Icon size={21} /></span>
+                  <span className="text-right text-[10px] font-black tracking-[.12em] text-black/30">{label}</span>
+                </div>
+                <div className="mt-9 text-2xl font-black leading-tight">{value}</div>
+                <p className="mt-3 text-sm leading-relaxed text-black/50">{text}</p>
+              </article>
+            ))}
+          </div>
+
+          <div className="mt-5 flex items-center gap-3 rounded-2xl bg-[#b7f34a] p-5 text-sm font-black sm:justify-center">
+            <BadgeCheck size={22} className="shrink-0" /> Yang mengubah rencana, memastikan pihak lain tidak kehilangan haknya.
           </div>
         </div>
       </section>
