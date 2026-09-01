@@ -461,7 +461,6 @@ function App() {
           <h2 className="mt-8 text-4xl font-black tracking-[-.04em] sm:text-6xl">Kalau hitungannya cocok, mulai dari 7 hari.</h2>
           <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-white/55">Tanya ketersediaan, ceritakan pengalaman narik Anda, lalu kita cek apakah skema ini pas untuk dua pihak.</p>
           <div className="mt-9"><WhatsAppButton /></div>
-          <p className="mt-4 text-xs font-bold text-white/35">WhatsApp langsung ke owner · 0811 1718 111</p>
         </div>
       </section>
 
