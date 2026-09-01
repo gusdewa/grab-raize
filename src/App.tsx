@@ -10,6 +10,8 @@ import {
   ChevronRight,
   CircleGauge,
   Clock3,
+  ClipboardCheck,
+  ExternalLink,
   FileCheck2,
   Fuel,
   Gauge,
@@ -22,6 +24,7 @@ import {
   ReceiptText,
   ShieldCheck,
   UserCheck,
+  Upload,
   WalletCards,
   Wrench,
   X,
@@ -45,6 +48,12 @@ const dailyRent = Math.round(monthlyRent / workingDays)
 
 const whatsappUrl =
   'https://wa.me/628111718111?text=Halo%2C%20saya%20tertarik%20trial%20rental%20Toyota%20Raize%20untuk%20driver%20online.%20Boleh%20minta%20info%20ketersediaannya%3F'
+
+const googleFormUrl =
+  'https://docs.google.com/forms/d/e/1FAIpQLSeITmhowtCaF1u3plmr13K7_M-c3C2tTHKXC7VGT-S6pSPpxw/viewform'
+const googleFormEmbedUrl = googleFormUrl
+  ? `${googleFormUrl}${googleFormUrl.includes('?') ? '&' : '?'}embedded=true`
+  : ''
 
 const money = (value: number) => `Rp${value.toLocaleString('id-ID')}rb`
 
@@ -106,6 +115,7 @@ function App() {
             <a className="transition hover:text-white" href="#skema">Skema</a>
             <a className="transition hover:text-white" href="#hitungan">Hitungan</a>
             <a className="transition hover:text-white" href="#skenario">Skenario</a>
+            <a className="transition hover:text-white" href="#daftar">Daftar</a>
             <WhatsAppButton compact />
           </div>
 
@@ -128,6 +138,7 @@ function App() {
                 ['Coba hitungan', '#hitungan'],
                 ['Kalau rencana berubah', '#skenario'],
                 ['Aturan yang jelas', '#aturan'],
+                ['Form pendaftaran', '#daftar'],
               ].map(([label, href]) => (
                 <a
                   key={href}
@@ -521,6 +532,74 @@ function App() {
                 <p className="mt-2 text-sm leading-relaxed text-black/50">{text}</p>
               </article>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="daftar" className="bg-white px-5 py-20 sm:px-8 lg:px-10 lg:py-28">
+        <div className="mx-auto max-w-7xl">
+          <div className="grid gap-8 lg:grid-cols-[.8fr_1.2fr] lg:items-end">
+            <div>
+              <div className="eyebrow">Daftar jadi driver</div>
+              <h2 className="section-title">3 wajib. 1 opsional. Isi sekali.</h2>
+            </div>
+            <p className="section-copy lg:pb-2">
+              Data dipakai untuk verifikasi calon driver. Registrasi dan aktivasi akun Grab/Gojek tetap diurus oleh driver.
+            </p>
+          </div>
+
+          <div className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-4">
+            {[
+              ['KTP', 'Identitas'],
+              ['KK', 'Data keluarga'],
+              ['SIM A', 'Masih berlaku'],
+              ['SKCK', 'Opsional'],
+            ].map(([document, note], index) => (
+              <div key={document} className="rounded-2xl border border-black/10 bg-[#f6f5ef] p-4 sm:p-5">
+                <div className="flex items-center justify-between">
+                  <span className="grid size-10 place-items-center rounded-xl bg-[#172019] text-[#b7f34a]">
+                    {index === 0 ? <ClipboardCheck size={20} /> : <Upload size={20} />}
+                  </span>
+                  <span className="text-[10px] font-black tracking-[.14em] text-black/25">0{index + 1}</span>
+                </div>
+                <div className="mt-5 text-lg font-black">{document}</div>
+                <div className="mt-1 text-xs font-semibold text-black/45">{note}</div>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-6 overflow-hidden rounded-[2rem] bg-[#172019] p-3 shadow-[0_30px_100px_rgba(23,32,25,.18)] sm:p-5">
+            {googleFormEmbedUrl ? (
+              <>
+                <iframe
+                  src={googleFormEmbedUrl}
+                  title="Form pendaftaran driver rental Toyota Raize"
+                  loading="lazy"
+                  className="h-[1180px] w-full rounded-[1.35rem] bg-white sm:h-[1080px]"
+                >
+                  Memuat formulir pendaftaran…
+                </iframe>
+                <div className="flex flex-col gap-3 px-3 pb-2 pt-5 text-white sm:flex-row sm:items-center sm:justify-between">
+                  <p className="text-xs font-semibold text-white/45">Upload dokumen memerlukan login Google.</p>
+                  <a
+                    href={googleFormUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center justify-center gap-2 rounded-full bg-[#b7f34a] px-5 py-3 text-sm font-extrabold text-[#172019]"
+                  >
+                    Buka formulir penuh <ExternalLink size={17} />
+                  </a>
+                </div>
+              </>
+            ) : (
+              <div className="grid min-h-80 place-items-center rounded-[1.35rem] border border-white/10 bg-white/5 p-8 text-center text-white">
+                <div>
+                  <span className="mx-auto grid size-16 place-items-center rounded-2xl bg-[#b7f34a] text-[#172019]"><ClipboardCheck size={29} /></span>
+                  <h3 className="mt-6 text-2xl font-black">Form pendaftaran sedang disiapkan</h3>
+                  <p className="mx-auto mt-3 max-w-md text-sm leading-relaxed text-white/50">Link Google Form akan tampil langsung di sini setelah dibuat.</p>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </section>
