@@ -157,7 +157,7 @@ function App() {
               <span className="mt-2 block text-[#b7f34a]">Hitungan tetap masuk.</span>
             </h1>
             <p className="mt-6 max-w-lg text-base leading-relaxed text-white/75 sm:text-lg">
-              Bukan rental turis. Ini skema khusus operasional driver online—mulai dari trial, lanjut kalau sama-sama cocok.
+              Skema khusus driver online—mulai trial 7 hari, lanjut 30 hari kalau sama-sama cocok.
             </p>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
