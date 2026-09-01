@@ -21,7 +21,6 @@ import {
   Phone,
   ReceiptText,
   ShieldCheck,
-  Sparkles,
   UserCheck,
   WalletCards,
   Wrench,
@@ -218,17 +217,14 @@ function App() {
             </div>
           </div>
 
-          <div className="mobile-snap relative -mx-5 mt-10 grid snap-x snap-mandatory grid-flow-col auto-cols-[86%] gap-4 overflow-x-auto px-5 pb-4 sm:mx-0 sm:grid-flow-row sm:auto-cols-auto sm:grid-cols-2 sm:overflow-visible sm:px-0 sm:pb-0 lg:mt-14 lg:grid-cols-3">
-            <div className="pointer-events-none absolute left-[16.6%] right-[16.6%] top-10 hidden h-px bg-black/15 lg:block" />
+          <div className="mobile-snap relative -mx-5 mt-10 grid snap-x snap-mandatory grid-flow-col auto-cols-[86%] gap-4 overflow-x-auto px-5 pb-4 sm:mx-auto sm:max-w-4xl sm:grid-flow-row sm:auto-cols-auto sm:grid-cols-2 sm:overflow-visible sm:px-0 sm:pb-0 lg:mt-14">
+            <div className="pointer-events-none absolute left-1/4 right-1/4 top-10 hidden h-px bg-black/15 lg:block" />
             {[
               {
                 step: '01', icon: KeyRound, title: 'Trial 7 hari', price: 'Rp1,225jt', note: 'Rp175rb × 7 · dibayar di depan', accent: true,
               },
               {
                 step: '02', icon: CalendarCheck, title: 'Paket 30 hari', price: 'Rp4,5jt', note: 'Setelah trial berjalan lancar', accent: false,
-              },
-              {
-                step: '03', icon: Sparkles, title: 'Driver terbukti', price: 'Rp13jt', note: '3 bulan · setelah 1–2 siklus baik', accent: false,
               },
             ].map(({ step, icon: Icon, title, price, note, accent }) => (
               <article key={step} className={`relative min-h-[340px] snap-start rounded-[1.75rem] border p-7 sm:min-h-0 sm:p-8 ${accent ? 'border-[#172019] bg-[#172019] text-white shadow-2xl' : 'border-black/10 bg-white'}`}>
@@ -401,8 +397,17 @@ function App() {
             <div className="eyebrow">Siapa yang kami cari</div>
             <h2 className="section-title">Bukan yang janji bayar paling tinggi.</h2>
             <p className="section-copy">Kami cari driver yang reliable, komunikasinya enak, dan menjaga mobil seperti alat kerjanya sendiri.</p>
-            <div className="mt-7 inline-flex items-center gap-3 rounded-2xl border border-black/10 bg-white px-4 py-3 text-sm font-bold">
-              <UserCheck size={21} className="text-[#579300]" /> Satu driver disetujui · tidak boleh dialihkan
+            <div className="mt-7 flex max-w-lg items-center gap-4 rounded-2xl bg-[#b7f34a] p-4">
+              <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-[#172019] text-[#b7f34a]">
+                <UserCheck size={21} />
+              </span>
+              <div>
+                <div className="text-sm font-black">Daftar Grab/Gojek diurus driver</div>
+                <div className="mt-0.5 text-xs font-semibold text-black/55">Registrasi, persetujuan, dan aktivasi akun platform adalah tanggung jawab driver.</div>
+              </div>
+            </div>
+            <div className="mt-3 inline-flex items-center gap-3 rounded-2xl border border-black/10 bg-white px-4 py-3 text-sm font-bold">
+              <UserCheck size={21} className="text-[#579300]" /> Mobil hanya boleh dipakai driver yang disetujui
             </div>
             <div className="mt-5 flex items-center gap-1 text-xs font-extrabold text-black/40 sm:hidden">
               Geser untuk lihat prosesnya <ChevronRight size={15} />
@@ -411,7 +416,7 @@ function App() {
 
           <div className="mobile-snap -mx-5 grid snap-x snap-mandatory grid-flow-col auto-cols-[82%] gap-3 overflow-x-auto px-5 pb-4 sm:mx-0 sm:grid-flow-row sm:auto-cols-auto sm:grid-cols-2 sm:overflow-visible sm:px-0 sm:pb-0">
             {[
-              { icon: FileCheck2, n: '01', title: 'Kirim dokumen', text: 'KTP, KK, SIM A, SKCK, alamat, dan akun ride-hailing.' },
+              { icon: FileCheck2, n: '01', title: 'Kirim dokumen', text: 'KTP, KK, SIM A, SKCK, alamat, dan bukti akun bila sudah aktif.' },
               { icon: Phone, n: '02', title: 'Kenalan singkat', text: 'Bahas pengalaman, pola kerja, dan komunikasi.' },
               { icon: BadgeCheck, n: '03', title: 'Cek 2 referensi', text: 'Keluarga dan referensi kerja yang bisa dihubungi.' },
               { icon: Car, n: '04', title: 'Mulai trial', text: 'Serah terima lengkap, lalu evaluasi bersama 7 hari.' },
