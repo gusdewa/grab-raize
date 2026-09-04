@@ -28,7 +28,6 @@ import {
   WalletCards,
   Wrench,
   X,
-  Zap,
 } from 'lucide-react'
 
 type ScenarioKey = 'hemat' | 'normal' | 'ramai'
@@ -57,22 +56,15 @@ const googleFormEmbedUrl = googleFormUrl
 
 const money = (value: number) => `Rp${value.toLocaleString('id-ID')}rb`
 
-function WhatsAppButton({ compact = false }: { compact?: boolean }) {
+function RegisterButton({ compact = false }: { compact?: boolean }) {
   return (
     <a
-      href={whatsappUrl}
-      target="_blank"
-      rel="noreferrer"
+      href="#daftar"
       className={`group inline-flex items-center justify-center gap-2 rounded-full bg-[#b7f34a] font-extrabold text-[#102015] transition hover:-translate-y-0.5 hover:bg-[#c8ff64] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#b7f34a] ${compact ? 'px-5 py-3 text-sm' : 'px-6 py-4 text-base shadow-[0_12px_36px_rgba(183,243,74,.22)]'}`}
     >
-      <MessageCircle size={compact ? 18 : 20} strokeWidth={2.5} />
-      Tanya via WhatsApp
-      {!compact && (
-        <ArrowRight
-          size={19}
-          className="transition-transform group-hover:translate-x-1"
-        />
-      )}
+      <ClipboardCheck size={compact ? 18 : 20} strokeWidth={2.5} />
+      Daftar Sekarang
+      {!compact && <ArrowRight size={19} className="transition-transform group-hover:translate-x-1" />}
     </a>
   )
 }
@@ -115,8 +107,8 @@ function App() {
             <a className="transition hover:text-white" href="#skema">Skema</a>
             <a className="transition hover:text-white" href="#hitungan">Hitungan</a>
             <a className="transition hover:text-white" href="#skenario">Skenario</a>
-            <a className="transition hover:text-white" href="#daftar">Daftar</a>
-            <WhatsAppButton compact />
+            <a className="transition hover:text-white" href={whatsappUrl} target="_blank" rel="noreferrer">WhatsApp</a>
+            <RegisterButton compact />
           </div>
 
           <button
@@ -132,13 +124,23 @@ function App() {
 
         {menuOpen && (
           <div className="absolute left-4 right-4 top-20 z-30 rounded-2xl bg-[#f6f5ef] p-5 text-[#172019] shadow-2xl md:hidden">
+            <a
+              href="#daftar"
+              onClick={() => setMenuOpen(false)}
+              className="mb-3 flex items-center justify-between rounded-2xl bg-[#172019] p-4 text-white"
+            >
+              <span>
+                <span className="block font-black">Daftar Sekarang</span>
+                <span className="mt-0.5 block text-xs font-semibold text-white/50">Isi form langsung di halaman ini</span>
+              </span>
+              <span className="grid size-10 place-items-center rounded-xl bg-[#b7f34a] text-[#172019]"><ClipboardCheck size={20} /></span>
+            </a>
             <div className="grid gap-1 font-bold">
               {[
                 ['Skema rental', '#skema'],
                 ['Coba hitungan', '#hitungan'],
                 ['Kalau rencana berubah', '#skenario'],
                 ['Aturan yang jelas', '#aturan'],
-                ['Form pendaftaran', '#daftar'],
               ].map(([label, href]) => (
                 <a
                   key={href}
@@ -173,7 +175,7 @@ function App() {
             </p>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
-              <WhatsAppButton />
+              <RegisterButton />
               <a
                 href="#hitungan"
                 className="inline-flex items-center justify-center gap-2 rounded-full border border-white/25 bg-white/10 px-6 py-4 text-sm font-extrabold backdrop-blur-md transition hover:bg-white/15"
@@ -181,6 +183,9 @@ function App() {
                 Lihat hitungannya <CircleGauge size={19} />
               </a>
             </div>
+            <a href={whatsappUrl} target="_blank" rel="noreferrer" className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-white/65 transition hover:text-white">
+              <MessageCircle size={17} /> Belum siap daftar? Tanya via WhatsApp
+            </a>
           </div>
         </div>
 
@@ -540,11 +545,11 @@ function App() {
         <div className="mx-auto max-w-7xl">
           <div className="grid gap-8 lg:grid-cols-[.8fr_1.2fr] lg:items-end">
             <div>
-              <div className="eyebrow">Daftar jadi driver</div>
-              <h2 className="section-title">3 wajib. 1 opsional. Isi sekali.</h2>
+              <div className="eyebrow">Form ada di halaman ini</div>
+              <h2 className="section-title">Daftar sekarang. Langsung di sini.</h2>
             </div>
             <p className="section-copy lg:pb-2">
-              Data dipakai untuk verifikasi calon driver. Registrasi dan aktivasi akun Grab/Gojek tetap diurus oleh driver.
+              Isi form di bawah untuk verifikasi calon driver. Aktivasi akun Grab/Gojek tetap diurus oleh driver.
             </p>
           </div>
 
@@ -644,10 +649,13 @@ function App() {
 
       <section className="bg-[#172019] px-5 py-20 text-white sm:px-8 lg:px-10 lg:py-28">
         <div className="mx-auto max-w-4xl text-center">
-          <span className="mx-auto grid size-16 place-items-center rounded-2xl bg-[#b7f34a] text-[#172019]"><Zap size={29} /></span>
-          <h2 className="mt-8 text-4xl font-black tracking-[-.04em] sm:text-6xl">Kalau hitungannya cocok, mulai dari 7 hari.</h2>
-          <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-white/55">Tanya ketersediaan, ceritakan pengalaman narik Anda, lalu kita cek apakah skema ini pas untuk dua pihak.</p>
-          <div className="mt-9"><WhatsAppButton /></div>
+          <span className="mx-auto grid size-16 place-items-center rounded-2xl bg-[#b7f34a] text-[#172019]"><ClipboardCheck size={29} /></span>
+          <h2 className="mt-8 text-4xl font-black tracking-[-.04em] sm:text-6xl">Siap mulai? Isi form pendaftarannya.</h2>
+          <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-white/55">Form pendaftaran tersedia langsung di halaman ini. Siapkan KTP, KK, dan SIM A.</p>
+          <div className="mt-9 flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <RegisterButton />
+            <a href={whatsappUrl} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-sm font-bold text-white/65 transition hover:text-white"><MessageCircle size={18} /> Tanya dulu via WhatsApp</a>
+          </div>
         </div>
       </section>
 
@@ -659,13 +667,13 @@ function App() {
       </footer>
 
       <a
-        href={whatsappUrl}
-        target="_blank"
-        rel="noreferrer"
-        aria-label="Tanya lewat WhatsApp"
-        className="fixed bottom-4 right-4 z-40 grid size-14 place-items-center rounded-full bg-[#b7f34a] text-[#172019] shadow-[0_12px_35px_rgba(0,0,0,.28)] transition hover:scale-105 sm:hidden"
+        href="#daftar"
+        aria-label="Daftar sekarang melalui form di halaman ini"
+        className="fixed bottom-3 left-3 right-3 z-40 flex items-center justify-center gap-2 rounded-full bg-[#b7f34a] px-5 py-4 text-sm font-black text-[#172019] shadow-[0_14px_38px_rgba(0,0,0,.3)] transition hover:bg-[#c8ff64] sm:hidden"
       >
-        <MessageCircle size={25} strokeWidth={2.5} />
+        <ClipboardCheck size={20} strokeWidth={2.5} />
+        Daftar Sekarang
+        <span className="text-xs font-bold text-[#172019]/55">· isi form di sini</span>
       </a>
     </main>
   )
